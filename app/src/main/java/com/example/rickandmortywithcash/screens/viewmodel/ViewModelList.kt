@@ -1,15 +1,19 @@
-package com.example.rickandmoryapiwithroom.screens.viewmodel
+package com.example.rickandmortywithcash.screens.viewmodel
 
+import android.content.Context
 import androidx.lifecycle.ViewModel
-import com.example.rickandmoryapiwithroom.model.Character
-import com.example.rickandmoryapiwithroom.service.ServiceImpl
 import kotlinx.coroutines.flow.MutableStateFlow
 import kotlinx.coroutines.flow.StateFlow
 import kotlinx.coroutines.flow.asStateFlow
+import com.example.rickandmortywithcash.model.Character
+import com.example.rickandmortywithcash.networkChanges
+import com.example.rickandmortywithcash.service.ServiceImpl
+import kotlinx.coroutines.flow.first
 
 class ViewModelList(
+    private val context: Context,
     private val service: ServiceImpl
-    ) : ViewModel() {
+) : ViewModel() {
 
     private val _charactersList = MutableStateFlow(mutableListOf<Character>())
     val charactersList: StateFlow<MutableList<Character>> = _charactersList.asStateFlow()
@@ -18,14 +22,34 @@ class ViewModelList(
     private var pageQuntity = 1
 
     suspend fun loadAllCharacters(page: Int) {
-        if(page <= pageQuntity) {
+        if (context.networkChanges.first()) {
+            loadAllCharacterFromOnline(page)
+        } else {
+            loadAllCharactersFromDb()
+        }
+    }
+
+    suspend fun loadAllCharacterFromOnline(page: Int) {
+        if (page <= pageQuntity) {
             _isLoading.value = true
             val listCharacters = service.loadAllCharacters(page)
             charactersList.value.addAll(listCharacters.results)
-            println(charactersList.value)
+            insertCharacterToDb(listCharacters.results)
             _isLoading.value = false
             pageQuntity = listCharacters.info.pages
-            println("page = $page , pg = $pageQuntity")
+        }
+    }
+
+    suspend fun loadAllCharactersFromDb() {
+        val list = service.loadAllCharactersFromDb()
+        charactersList.value.clear()
+        charactersList.value.addAll(list)
+        println(charactersList.value)
+    }
+
+    suspend fun insertCharacterToDb(list: List<Character>) {
+        for (character in list) {
+            service.insertCharacterToDb(character)
         }
     }
 }

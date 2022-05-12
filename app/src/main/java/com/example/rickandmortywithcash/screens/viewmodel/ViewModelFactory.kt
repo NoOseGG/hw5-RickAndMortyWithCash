@@ -1,11 +1,14 @@
-package com.example.rickandmoryapiwithroom.screens.viewmodel
+package com.example.rickandmortywithcash.screens.viewmodel
 
+import android.content.Context
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.ViewModelProvider
-import com.example.rickandmoryapiwithroom.service.ServiceImpl
-import com.example.rickandmoryapiwithroom.service.ServiceLocator
+import com.example.rickandmortywithcash.service.ServiceImpl
+import com.example.rickandmortywithcash.service.ServiceLocator
 
-class ViewModelFactory : ViewModelProvider.Factory {
+class ViewModelFactory(
+    private val context: Context
+) : ViewModelProvider.Factory {
 
     private val service: ServiceImpl by lazy {
         ServiceLocator.getInstanceService()
@@ -13,7 +16,8 @@ class ViewModelFactory : ViewModelProvider.Factory {
 
     override fun <T : ViewModel?> create(modelClass: Class<T>): T {
         return ViewModelList(
-            service = service
+            service = service,
+            context = context,
         ) as T
     }
 }
