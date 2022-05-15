@@ -11,7 +11,8 @@ import com.example.rickandmortywithcash.databinding.CharacterItemBinding
 import com.example.rickandmortywithcash.model.Character
 
 class CharacterDataAdapter(
-    context: Context
+    context: Context,
+    private val onClick: (Character) -> Unit,
 ) : PagingDataAdapter<Character, CharacterViewHolder>(DIFF_UTIL) {
 
     private val layoutInflater = LayoutInflater.from(context)
@@ -23,7 +24,8 @@ class CharacterDataAdapter(
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): CharacterViewHolder {
         return CharacterViewHolder(
-            binding = CharacterItemBinding.inflate(layoutInflater, parent, false)
+            binding = CharacterItemBinding.inflate(layoutInflater, parent, false),
+            onClick = onClick
         )
     }
 
@@ -41,11 +43,15 @@ class CharacterDataAdapter(
 }
 
 class CharacterViewHolder(
-    private val binding: CharacterItemBinding
+    private val binding: CharacterItemBinding,
+    private val onClick: (Character) -> Unit,
 ) : RecyclerView.ViewHolder(binding.root) {
 
     fun bind(item: Character) {
         binding.imgAvatar.load(item.image)
         binding.tvName.text = item.name
+        binding.root.setOnClickListener {
+            onClick(item)
+        }
     }
 }

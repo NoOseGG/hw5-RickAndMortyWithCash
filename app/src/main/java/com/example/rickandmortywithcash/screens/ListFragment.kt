@@ -6,8 +6,11 @@ import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import androidx.core.os.bundleOf
 import androidx.lifecycle.*
+import androidx.navigation.fragment.findNavController
 import androidx.recyclerview.widget.LinearLayoutManager
+import com.example.rickandmortywithcash.R
 import com.example.rickandmortywithcash.addSpaceDecoration
 import com.example.rickandmortywithcash.databinding.FragmentListBinding
 import kotlinx.coroutines.launch
@@ -23,7 +26,15 @@ class ListFragment : Fragment() {
     private var _vmList: ViewModelList? = null
     private val vmList get() = requireNotNull(_vmList)
     private val adapter by lazy {
-        CharacterDataAdapter(requireContext())
+        CharacterDataAdapter(requireContext()) {
+            findNavController().navigate(
+                R.id.action_listFragment_to_detailsFragment,
+                bundleOf(
+                    DetailsFragment.KEY_CHARACTER_ID to it.id,
+                    DetailsFragment.KEY_NAME_CHARACTER to it.name,
+                )
+            )
+        }
     }
 
     override fun onCreateView(
@@ -39,7 +50,6 @@ class ListFragment : Fragment() {
             .root
     }
 
-    @SuppressLint("UnsafeRepeatOnLifecycleDetector")
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
 

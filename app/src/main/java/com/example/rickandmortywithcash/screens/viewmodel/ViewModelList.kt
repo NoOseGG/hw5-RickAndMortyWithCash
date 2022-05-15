@@ -12,8 +12,11 @@ class ViewModelList(
     private val service: ServiceImpl
 ) : ViewModel() {
 
-    val characters = Pager(PagingConfig(pageSize = 20)) {
+    val characters = Pager(PagingConfig(PAGE_SIZE)) {
         CharacterDataSource(service)
     }.flow.cachedIn(viewModelScope)
 
+    companion object {
+        const val PAGE_SIZE = 15
+    }
 }

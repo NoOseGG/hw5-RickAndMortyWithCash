@@ -18,7 +18,6 @@ class CharacterDataSource(
         return try {
             val nextPageNumber = params.key ?: 0
             val response = service.loadAllCharacters(nextPageNumber)
-            println(nextPageNumber)
             LoadResult.Page(
                 data = response.results,
                 prevKey = if (nextPageNumber > 0) nextPageNumber - 1 else null,

@@ -2,6 +2,7 @@ package com.example.rickandmortywithcash
 
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
+import android.view.MenuItem
 import androidx.navigation.NavController
 import androidx.navigation.NavHost
 import androidx.navigation.ui.setupActionBarWithNavController
@@ -25,5 +26,15 @@ class MainActivity : AppCompatActivity() {
         ServiceLocator.init(applicationContext)
         setSupportActionBar(binding.toolbar)
         setupActionBarWithNavController(navController)
+    }
+
+    override fun onOptionsItemSelected(item: MenuItem): Boolean {
+        when(item.itemId) {
+            android.R.id.home -> {
+                onBackPressed()
+                return true
+            }
+        }
+        return false
     }
 }
