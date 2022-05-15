@@ -1,0 +1,32 @@
+package com.example.rickandmortywithcash.paging
+
+import androidx.paging.PagingSource
+import androidx.paging.PagingState
+import com.example.rickandmortywithcash.model.Character
+import com.example.rickandmortywithcash.service.ServiceImpl
+import java.lang.Exception
+
+class CharacterDataSource(
+    private val service: ServiceImpl
+) : PagingSource<Int, Character>() {
+
+    override fun getRefreshKey(state: PagingState<Int, Character>): Int? {
+        TODO("Not yet implemented")
+    }
+
+    override suspend fun load(params: LoadParams<Int>): LoadResult<Int, Character> {
+        return try {
+            val nextPageNumber = params.key ?: 0
+            val response = service.loadAllCharacters(nextPageNumber)
+            println(nextPageNumber)
+            LoadResult.Page(
+                data = response.results,
+                prevKey = if (nextPageNumber > 0) nextPageNumber - 1 else null,
+                nextKey = if (nextPageNumber < response.info.pages) nextPageNumber + 1 else null
+            )
+        } catch (e: Exception) {
+            LoadResult.Error(e)
+        }
+
+    }
+}

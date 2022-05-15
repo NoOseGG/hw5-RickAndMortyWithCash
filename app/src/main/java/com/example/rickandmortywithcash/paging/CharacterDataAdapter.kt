@@ -1,33 +1,30 @@
-package com.example.rickandmortywithcash.adapter
+package com.example.rickandmortywithcash.paging
 
 import android.content.Context
 import android.view.LayoutInflater
 import android.view.ViewGroup
+import androidx.paging.PagingDataAdapter
 import androidx.recyclerview.widget.DiffUtil
-import androidx.recyclerview.widget.ListAdapter
 import androidx.recyclerview.widget.RecyclerView
 import coil.load
-import com.example.rickandmortywithcash.model.Character
 import com.example.rickandmortywithcash.databinding.CharacterItemBinding
+import com.example.rickandmortywithcash.model.Character
 
-class CharacterAdapter(
-    private val context: Context,
-    private val onClick: (Character) -> Unit
-) : ListAdapter<Character, CharacterViewHolder>(DIFF_UTIL) {
+class CharacterDataAdapter(
+    context: Context
+) : PagingDataAdapter<Character, CharacterViewHolder>(DIFF_UTIL) {
+
+    private val layoutInflater = LayoutInflater.from(context)
+
+    override fun onBindViewHolder(holder: CharacterViewHolder, position: Int) {
+        val item = getItem(position)
+        item?.let { holder.bind(item) }
+    }
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): CharacterViewHolder {
         return CharacterViewHolder(
-            binding = CharacterItemBinding.inflate(
-                LayoutInflater.from(context),
-                parent,
-                false
-            ),
-            onClick = onClick,
+            binding = CharacterItemBinding.inflate(layoutInflater, parent, false)
         )
-    }
-
-    override fun onBindViewHolder(holder: CharacterViewHolder, position: Int) {
-        holder.bind(getItem(position))
     }
 
     companion object {
@@ -39,21 +36,16 @@ class CharacterAdapter(
             override fun areContentsTheSame(oldItem: Character, newItem: Character): Boolean {
                 return oldItem == newItem
             }
-
         }
     }
 }
 
 class CharacterViewHolder(
-    private val binding: CharacterItemBinding,
-    private val onClick: (Character) -> Unit,
+    private val binding: CharacterItemBinding
 ) : RecyclerView.ViewHolder(binding.root) {
 
     fun bind(item: Character) {
         binding.imgAvatar.load(item.image)
         binding.tvName.text = item.name
-        binding.root.setOnClickListener {
-            onClick(item)
-        }
     }
 }

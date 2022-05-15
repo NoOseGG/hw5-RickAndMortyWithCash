@@ -6,9 +6,7 @@ import androidx.lifecycle.ViewModelProvider
 import com.example.rickandmortywithcash.service.ServiceImpl
 import com.example.rickandmortywithcash.service.ServiceLocator
 
-class ViewModelFactory(
-    private val context: Context
-) : ViewModelProvider.Factory {
+class ViewModelFactory() : ViewModelProvider.Factory {
 
     private val service: ServiceImpl by lazy {
         ServiceLocator.getInstanceService()
@@ -17,7 +15,6 @@ class ViewModelFactory(
     override fun <T : ViewModel?> create(modelClass: Class<T>): T {
         return ViewModelList(
             service = service,
-            context = context,
         ) as T
     }
 }

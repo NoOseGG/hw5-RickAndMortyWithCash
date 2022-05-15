@@ -14,8 +14,3 @@ data class Character(
         image = image,
     )
 }
-
-data class Location(
-    val name: String,
-    val url: String,
-)
