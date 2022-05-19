@@ -7,7 +7,6 @@ import androidx.navigation.NavController
 import androidx.navigation.NavHost
 import androidx.navigation.ui.setupActionBarWithNavController
 import com.example.rickandmortywithcash.databinding.ActivityMainBinding
-import com.example.rickandmortywithcash.service.ServiceLocator
 
 class MainActivity : AppCompatActivity() {
 
@@ -23,7 +22,8 @@ class MainActivity : AppCompatActivity() {
         _binding = ActivityMainBinding.inflate(layoutInflater)
         setContentView(binding.root)
 
-        ServiceLocator.init(applicationContext)
+
+
         setSupportActionBar(binding.toolbar)
         setupActionBarWithNavController(navController)
     }

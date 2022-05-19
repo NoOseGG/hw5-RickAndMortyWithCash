@@ -9,18 +9,17 @@ import androidx.lifecycle.lifecycleScope
 import coil.load
 import com.example.rickandmortywithcash.R
 import com.example.rickandmortywithcash.databinding.FragmentDetailsBinding
-import com.example.rickandmortywithcash.service.ServiceLocator
+import com.example.rickandmortywithcash.service.Service
+import com.example.rickandmortywithcash.service.ServiceImpl
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.launch
+import org.koin.android.ext.android.inject
 
 class DetailsFragment : Fragment() {
 
     private var _binding: FragmentDetailsBinding? = null
     private val binding get() = requireNotNull(_binding)
-    private val service by lazy {
-        ServiceLocator.getInstanceService()
-    }
-
+    private val service: ServiceImpl by inject()
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?

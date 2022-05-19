@@ -3,6 +3,7 @@ package com.example.rickandmortywithcash.retrofit
 import com.example.rickandmortywithcash.model.ListCharacters
 import com.example.rickandmortywithcash.model.Character
 import com.example.rickandmortywithcash.model.CharacterDetails
+import dagger.Provides
 import retrofit2.http.GET
 import retrofit2.http.Path
 import retrofit2.http.Query
