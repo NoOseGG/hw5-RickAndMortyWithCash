@@ -5,8 +5,14 @@
       <map>
         <entry key="..\:/MyProgramming/MyProject/RickAndMortyWithCash/app/src/main/res/layout/activity_main.xml" value="0.2" />
         <entry key="..\:/MyProgramming/MyProject/RickAndMortyWithCash/app/src/main/res/layout/character_item.xml" value="0.22826086956521738" />
+        <entry key="..\:/MyProgramming/MyProject/RickAndMortyWithCash/app/src/main/res/layout/episode_item.xml" value="0.22826086956521738" />
         <entry key="..\:/MyProgramming/MyProject/RickAndMortyWithCash/app/src/main/res/layout/fragment_details.xml" value="0.2" />
+        <entry key="..\:/MyProgramming/MyProject/RickAndMortyWithCash/app/src/main/res/layout/fragment_episode.xml" value="0.22826086956521738" />
+        <entry key="..\:/MyProgramming/MyProject/RickAndMortyWithCash/app/src/main/res/layout/fragment_episode_details.xml" value="0.22826086956521738" />
         <entry key="..\:/MyProgramming/MyProject/RickAndMortyWithCash/app/src/main/res/layout/fragment_list.xml" value="0.11302083333333333" />
+        <entry key="..\:/MyProgramming/MyProject/RickAndMortyWithCash/app/src/main/res/layout/fragment_setting.xml" value="0.1125" />
+        <entry key="..\:/MyProgramming/MyProject/RickAndMortyWithCash/app/src/main/res/menu-v26/my_bottom_menu.xml" value="0.25416666666666665" />
+        <entry key="..\:/MyProgramming/MyProject/RickAndMortyWithCash/app/src/main/res/menu/my_bottom_menu.xml" value="0.1125" />
         <entry key="..\:/MyProgramming/MyProject/RickAndMortyWithCash/app/src/main/res/menu/my_toolbar_menu.xml" value="0.25416666666666665" />
       </map>
     </option>

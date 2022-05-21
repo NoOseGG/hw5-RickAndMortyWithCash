@@ -32,7 +32,6 @@ fun RecyclerView.addSpaceDecoration(space: Int) {
             parent: RecyclerView,
             state: RecyclerView.State,
         ) {
-            outRect.bottom = space
             outRect.top = space
             outRect.left = space
             outRect.right = space

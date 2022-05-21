@@ -5,7 +5,9 @@ import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import androidx.core.os.bundleOf
 import androidx.lifecycle.lifecycleScope
+import androidx.navigation.fragment.findNavController
 import coil.load
 import com.example.rickandmortywithcash.R
 import com.example.rickandmortywithcash.databinding.FragmentDetailsBinding
@@ -19,7 +21,7 @@ class DetailsFragment : Fragment() {
 
     private var _binding: FragmentDetailsBinding? = null
     private val binding get() = requireNotNull(_binding)
-    private val service: ServiceImpl by inject()
+    private val service: Service by inject()
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?
@@ -46,6 +48,17 @@ class DetailsFragment : Fragment() {
                     }
                 }
             }
+
+            binding.buttonEpisodes.setOnClickListener {
+                findNavController().navigate(
+                    R.id.action_detailsFragment_to_episodeFragment,
+                    bundleOf(
+                        EpisodeFragment.KEY_CHARACTER_EPISODE to character?.episode,
+                        EpisodeFragment.KEY_CHARACTER_NAME to character?.name
+                    )
+                )
+            }
+
         }
     }
 

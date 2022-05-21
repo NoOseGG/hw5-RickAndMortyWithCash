@@ -3,8 +3,14 @@ package com.example.rickandmortywithcash
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.view.MenuItem
+import android.view.View
+import android.widget.Toast
+import androidx.fragment.app.ListFragment
 import androidx.navigation.NavController
 import androidx.navigation.NavHost
+import androidx.navigation.Navigation.findNavController
+import androidx.navigation.findNavController
+import androidx.navigation.fragment.NavHostFragment.Companion.findNavController
 import androidx.navigation.ui.setupActionBarWithNavController
 import com.example.rickandmortywithcash.databinding.ActivityMainBinding
 
@@ -22,7 +28,21 @@ class MainActivity : AppCompatActivity() {
         _binding = ActivityMainBinding.inflate(layoutInflater)
         setContentView(binding.root)
 
-
+        binding.bottomMenu.setOnItemSelectedListener {
+            when(it.itemId) {
+                R.id.list -> {
+                    navController.navigate(R.id.to_listFragment)
+                    true
+                }
+                R.id.setting -> {
+                    navController.navigate(R.id.to_settingFragment)
+                    true
+                }
+                else -> {
+                    error("error")
+                }
+            }
+        }
 
         setSupportActionBar(binding.toolbar)
         setupActionBarWithNavController(navController)

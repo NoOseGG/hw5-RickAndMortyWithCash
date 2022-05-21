@@ -17,7 +17,7 @@ import retrofit2.converter.gson.GsonConverterFactory
 
 val serviceModule = module {
 
-    single {
+    single<Service> {
         ServiceImpl(
             api = get(),
             characterRepository = get()

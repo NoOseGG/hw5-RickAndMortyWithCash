@@ -3,6 +3,7 @@ package com.example.rickandmortywithcash.service
 import com.example.rickandmortywithcash.model.ListCharacters
 import com.example.rickandmortywithcash.model.Character
 import com.example.rickandmortywithcash.model.CharacterDetails
+import com.example.rickandmortywithcash.model.Episode
 import com.example.rickandmortywithcash.retrofit.RickAndMortyApi
 
 class ServiceImpl(
@@ -24,5 +25,9 @@ class ServiceImpl(
 
     override suspend fun insertCharacterToDb(character: Character) {
         characterRepository.insertCharacterToDb(character)
+    }
+
+    override suspend fun loadEpisode(number: Int): Episode {
+        return api.getEpisode(number)
     }
 }

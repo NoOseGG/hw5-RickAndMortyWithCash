@@ -1,9 +1,8 @@
 package com.example.rickandmortywithcash.retrofit
 
 import com.example.rickandmortywithcash.model.ListCharacters
-import com.example.rickandmortywithcash.model.Character
 import com.example.rickandmortywithcash.model.CharacterDetails
-import dagger.Provides
+import com.example.rickandmortywithcash.model.Episode
 import retrofit2.http.GET
 import retrofit2.http.Path
 import retrofit2.http.Query
@@ -19,4 +18,9 @@ interface RickAndMortyApi {
     suspend fun getCharacter(
         @Path("id") id: Int
     ): CharacterDetails
+
+    @GET("episode/{number}")
+    suspend fun getEpisode(
+        @Path("number") number: Int
+    ): Episode
 }

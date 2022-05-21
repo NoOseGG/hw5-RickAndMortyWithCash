@@ -11,7 +11,7 @@ import com.example.rickandmortywithcash.service.ServiceImpl
 import org.koin.core.component.KoinComponent
 
 class ViewModelList(
-    private val service: ServiceImpl
+    private val service: Service
 ) : ViewModel(){
 
     val characters = Pager(PagingConfig(PAGE_SIZE)) {

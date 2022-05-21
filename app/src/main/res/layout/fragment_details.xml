@@ -4,7 +4,7 @@
     android:layout_height="match_parent"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
-    android:background="@drawable/background_space">
+    android:background="?colorSecondary">
 
     <com.google.android.material.imageview.ShapeableImageView
         android:id="@+id/img_avatar_details"
@@ -90,5 +90,16 @@
         app:layout_constraintTop_toBottomOf="@id/gender"
         app:layout_constraintStart_toStartOf="parent"
         tools:text="Location: Earth"/>
+
+    <Button
+        android:id="@+id/button_episodes"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        app:layout_constraintTop_toBottomOf="@id/location"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        android:textAllCaps="false"
+        android:text="@string/button_episodes"
+        />
 
 </androidx.constraintlayout.widget.ConstraintLayout>
