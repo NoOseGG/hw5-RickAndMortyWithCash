@@ -4,8 +4,6 @@ import androidx.lifecycle.ViewModel
 import com.example.rickandmortywithcash.model.Episode
 import com.example.rickandmortywithcash.service.Service
 import kotlinx.coroutines.flow.MutableSharedFlow
-import kotlinx.coroutines.flow.MutableStateFlow
-import kotlinx.coroutines.flow.StateFlow
 
 class ViewModelEpisodeDetails(
     private val service: Service

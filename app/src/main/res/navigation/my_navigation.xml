@@ -56,13 +56,15 @@
     <fragment
         android:id="@+id/episodeDetailsFragment"
         android:name="com.example.rickandmortywithcash.screens.EpisodeDetailsFragment"
-        android:label="EpisodeDetailsFragment" />
+        android:label="Episode {KEY_EPISODE_NUMBER} details"
+        tools:layout="@layout/fragment_episode_details"/>
     <argument
-        android:name="episode"
+        android:name="KEY_EPISODE_NUMBER"
         app:argType="string"/>
 
     <fragment
         android:id="@+id/settingFragment"
         android:name="com.example.rickandmortywithcash.screens.SettingFragment"
-        android:label="Setting"/>
+        android:label="Setting"
+        tools:layout="@layout/fragment_setting"/>
 </navigation>

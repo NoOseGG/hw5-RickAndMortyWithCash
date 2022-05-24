@@ -4,7 +4,6 @@ import androidx.paging.PagingSource
 import androidx.paging.PagingState
 import com.example.rickandmortywithcash.model.Character
 import com.example.rickandmortywithcash.service.Service
-import com.example.rickandmortywithcash.service.ServiceImpl
 import java.lang.Exception
 
 class CharacterDataSource(

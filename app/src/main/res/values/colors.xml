@@ -15,4 +15,8 @@
     <color name="desert">#BA5536</color>
     <color name="red_clay">#A43820</color>
 
+    <!-- dark theme -->
+    <color name="dark_primary">#000000</color>
+    <color name="dark_secondary">#353232</color>
+
 </resources>

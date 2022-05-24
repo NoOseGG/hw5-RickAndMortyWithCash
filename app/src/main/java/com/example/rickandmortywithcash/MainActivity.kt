@@ -3,14 +3,8 @@ package com.example.rickandmortywithcash
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.view.MenuItem
-import android.view.View
-import android.widget.Toast
-import androidx.fragment.app.ListFragment
 import androidx.navigation.NavController
 import androidx.navigation.NavHost
-import androidx.navigation.Navigation.findNavController
-import androidx.navigation.findNavController
-import androidx.navigation.fragment.NavHostFragment.Companion.findNavController
 import androidx.navigation.ui.setupActionBarWithNavController
 import com.example.rickandmortywithcash.databinding.ActivityMainBinding
 
