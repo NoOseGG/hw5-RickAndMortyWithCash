@@ -5,6 +5,7 @@ import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import android.widget.Toast
 import androidx.core.os.bundleOf
 import androidx.lifecycle.*
 import androidx.navigation.fragment.findNavController
@@ -58,6 +59,13 @@ class ListFragment : Fragment(), KoinComponent {
             viewModel.characters.collectLatest {
                 adapter.submitData(it)
             }
+        }
+
+        binding.swipeRefresh.setOnRefreshListener {
+            adapter.refresh()
+            Toast.makeText(requireContext(), "Data updated", Toast.LENGTH_SHORT)
+                .show()
+            binding.swipeRefresh.isRefreshing = false
         }
     }
 

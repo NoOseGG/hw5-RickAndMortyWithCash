@@ -11,12 +11,12 @@ class CharacterDataSource(
 ) : PagingSource<Int, Character>() {
 
     override fun getRefreshKey(state: PagingState<Int, Character>): Int? {
-        TODO("Not yet implemented")
+        return 0
     }
 
     override suspend fun load(params: LoadParams<Int>): LoadResult<Int, Character> {
         return try {
-            val nextPageNumber = params.key ?: 0
+            val nextPageNumber = params.key ?: 1
             val response = service.loadAllCharacters(nextPageNumber)
             LoadResult.Page(
                 data = response.results,

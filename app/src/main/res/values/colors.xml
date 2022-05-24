@@ -18,5 +18,7 @@
     <!-- dark theme -->
     <color name="dark_primary">#000000</color>
     <color name="dark_secondary">#353232</color>
+    <color name="dark_primary_variant">#595655</color>
+
 
 </resources>
