@@ -37,7 +37,6 @@ class MainActivity : AppCompatActivity() {
         setSupportActionBar(binding.toolbar)
         setupActionBarWithNavController(navController)
 
-        bottomNavigationListener()
     }
 
 
@@ -50,23 +49,5 @@ class MainActivity : AppCompatActivity() {
             }
         }
         return false
-    }
-
-    private fun bottomNavigationListener() {
-        binding.bottomMenu.setOnItemSelectedListener {
-            when(it.itemId) {
-                R.id.list -> {
-                    navController.navigate(R.id.to_listFragment)
-                    true
-                }
-                R.id.setting -> {
-                    navController.navigate(R.id.to_settingFragment)
-                    true
-                }
-                else -> {
-                    error("error")
-                }
-            }
-        }
     }
 }
