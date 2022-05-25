@@ -30,6 +30,9 @@
         <action
             android:id="@+id/action_detailsFragment_to_episodeFragment"
             app:destination="@id/episodeFragment"/>
+        <argument
+            android:name="characterId"
+            app:argType="integer" />
     </fragment>
 
     <fragment
@@ -43,14 +46,18 @@
         <action
             android:id="@+id/action_episodeFragment_to_episodeDetailsFragment"
             app:destination="@id/episodeDetailsFragment" />
+        <argument
+            android:name="characterEpisodes"
+            app:argType="string[]" />
     </fragment>
     <fragment
         android:id="@+id/episodeDetailsFragment"
         android:name="com.example.rickandmortywithcash.screens.EpisodeDetailsFragment"
-        android:label="Episode {KEY_EPISODE_NUMBER} details"
-        tools:layout="@layout/fragment_episode_details"/>
+        android:label="Episode {episodeNumber} details"
+        tools:layout="@layout/fragment_episode_details">
     <argument
-        android:name="KEY_EPISODE_NUMBER"
+        android:name="episodeNumber"
         app:argType="string"/>
+    </fragment>
 
 </navigation>

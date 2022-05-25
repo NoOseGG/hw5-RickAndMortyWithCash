@@ -18,15 +18,10 @@ class EpisodeFragment : Fragment() {
     
     private var _binding: FragmentEpisodeBinding? = null
     private val binding get() = requireNotNull(_binding)
-    private val viewModel = viewModel<ViewModelEpisodeDetails>()
     private val adapter by lazy {
         EpisodeAdapter(requireContext()) {
-            findNavController().navigate(
-                R.id.action_episodeFragment_to_episodeDetailsFragment,
-                bundleOf(
-                    EpisodeDetailsFragment.KEY_EPISODE_NUMBER to it
-                )
-            )
+            val action = EpisodeFragmentDirections.actionEpisodeFragmentToEpisodeDetailsFragment(it)
+            findNavController().navigate(action)
         }
     }
 

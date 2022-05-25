@@ -27,13 +27,8 @@ class ListFragment : Fragment(), KoinComponent {
     private val viewModel by viewModel<ViewModelList>()
     private val adapter by lazy {
         CharacterDataAdapter(requireContext()) {
-            findNavController().navigate(
-                R.id.action_listFragment_to_detailsFragment,
-                bundleOf(
-                    DetailsFragment.KEY_CHARACTER_ID to it.id,
-                    DetailsFragment.KEY_NAME_CHARACTER to it.name,
-                )
-            )
+            val action = ListFragmentDirections.actionListFragmentToDetailsFragment(it.name, it.id)
+            findNavController().navigate(action)
         }
     }
 

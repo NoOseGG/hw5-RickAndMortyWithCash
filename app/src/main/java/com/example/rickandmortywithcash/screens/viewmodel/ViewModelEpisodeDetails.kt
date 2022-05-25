@@ -13,7 +13,6 @@ class ViewModelEpisodeDetails(
 
     suspend fun getEpisode(number: Int) {
         val episode = service.loadEpisode(number)
-        println(episode)
         episodeFlow.emit(episode)
     }
 }
