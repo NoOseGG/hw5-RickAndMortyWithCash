@@ -7,6 +7,7 @@ import androidx.appcompat.app.AppCompatDelegate
 import androidx.navigation.NavController
 import androidx.navigation.NavHost
 import androidx.navigation.ui.setupActionBarWithNavController
+import androidx.navigation.ui.setupWithNavController
 import com.example.rickandmortywithcash.databinding.ActivityMainBinding
 import com.example.rickandmortywithcash.manager.NightMode
 import com.example.rickandmortywithcash.manager.SharedPrefsManager
@@ -36,6 +37,7 @@ class MainActivity : AppCompatActivity() {
         setContentView(binding.root)
         setSupportActionBar(binding.toolbar)
         setupActionBarWithNavController(navController)
+        binding.bottomMenu.setupWithNavController(navController)
 
     }
 

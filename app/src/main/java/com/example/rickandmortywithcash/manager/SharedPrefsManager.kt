@@ -10,7 +10,7 @@ class SharedPrefsManager(context: Context) {
     var nightMode: NightMode by enumPref(KEY_NIGHT_MODE, NightMode.SYSTEM)
 
     private inline fun <reified E : Enum<E>> enumPref(key: String, defaultValue: E) =
-        PrefDelegate.PrefsDelegate(
+        PrefsDelegate(
             sharedPreferences,
             getValue = { getString(key, null)?.let(::enumValueOf) ?: defaultValue },
             setValue = { putString(key, it.name) }
