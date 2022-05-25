@@ -8,7 +8,7 @@ import com.example.rickandmortywithcash.retrofit.RickAndMortyApi
 
 class ServiceImpl(
     private val api: RickAndMortyApi,
-    private val characterRepository: CharacterRepository,
+    private val characterRepository: CharacterRepositoryImpl,
 ) : Service {
 
     override suspend fun loadAllCharacters(page: Int): ListCharacters {

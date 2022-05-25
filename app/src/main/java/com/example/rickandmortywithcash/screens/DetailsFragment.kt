@@ -11,10 +11,12 @@ import androidx.navigation.fragment.findNavController
 import coil.load
 import com.example.rickandmortywithcash.R
 import com.example.rickandmortywithcash.databinding.FragmentDetailsBinding
+import com.example.rickandmortywithcash.model.CharacterDetails
 import com.example.rickandmortywithcash.service.Service
 import com.example.rickandmortywithcash.service.ServiceImpl
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.launch
+import kotlinx.coroutines.withContext
 import org.koin.android.ext.android.inject
 
 class DetailsFragment : Fragment() {
@@ -33,20 +35,19 @@ class DetailsFragment : Fragment() {
         super.onViewCreated(view, savedInstanceState)
 
         val id = arguments?.getInt(KEY_CHARACTER_ID)
+        var character: CharacterDetails?
+        viewLifecycleOwner.lifecycleScope.launch() {
+            withContext(Dispatchers.IO) {
+                character = id?.let { service.loadCharacter(it) }
+            }
 
-        viewLifecycleOwner.lifecycleScope.launch(Dispatchers.IO) {
-            val character = id?.let { service.loadCharacter(it) }
-            launch(Dispatchers.Main) {
-                with(binding) {
-                    if (character != null) {
-                        imgAvatarDetails.load(character.image)
-                        name.text = character.name
-                        status.text = getString(R.string.status, character.status)
-                        species.text = getString(R.string.species, character.species)
-                        type.text = getString(R.string.type, character.type)
-                        gender.text = getString(R.string.gender, character.gender)
-                    }
-                }
+            with(binding) {
+                imgAvatarDetails.load(character?.image)
+                name.text = character?.name
+                status.text = getString(R.string.status, character?.status)
+                species.text = getString(R.string.species, character?.species)
+                type.text = getString(R.string.type, character?.type)
+                gender.text = getString(R.string.gender, character?.gender)
             }
 
             binding.buttonEpisodes.setOnClickListener {

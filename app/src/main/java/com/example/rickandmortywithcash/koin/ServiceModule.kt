@@ -3,7 +3,7 @@ package com.example.rickandmortywithcash.koin
 import androidx.room.Room
 import com.example.rickandmortywithcash.manager.SharedPrefsManager
 import com.example.rickandmortywithcash.room.AppDataBase
-import com.example.rickandmortywithcash.service.CharacterRepository
+import com.example.rickandmortywithcash.service.CharacterRepositoryImpl
 import com.example.rickandmortywithcash.service.Service
 import com.example.rickandmortywithcash.service.ServiceImpl
 import org.koin.dsl.module
@@ -18,7 +18,7 @@ val serviceModule = module {
     }
 
     single {
-        CharacterRepository(
+        CharacterRepositoryImpl(
             characterDao = get()
         )
     }

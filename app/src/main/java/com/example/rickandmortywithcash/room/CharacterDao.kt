@@ -10,7 +10,7 @@ import com.example.rickandmortywithcash.room.entity.CharacterDbEntity
 interface CharacterDao {
 
     @Query("SELECT * FROM characters")
-    suspend fun getAllCharactersFromDb(): List<CharacterDbEntity>
+    suspend fun getAllCharacters(): List<CharacterDbEntity>
 
     @Insert(onConflict = OnConflictStrategy.IGNORE)
     suspend fun insertCharacter(characterDbEntity: CharacterDbEntity)

@@ -17,6 +17,6 @@ class ViewModelList(
     }.flow.cachedIn(viewModelScope)
 
     companion object {
-        const val PAGE_SIZE = 15
+        private const val PAGE_SIZE = 15
     }
 }
