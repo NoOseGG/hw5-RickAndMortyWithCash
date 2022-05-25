@@ -7,4 +7,18 @@
     <color name="teal_700">#FF018786</color>
     <color name="black">#FF000000</color>
     <color name="white">#FFFFFFFF</color>
+    <color name="background_card_view">#A43820</color>
+    <color name="text_color">#FFFFFF</color>
+
+    <color name="cloud_shadow">#693D3D</color>
+    <color name="rock">#46211A</color>
+    <color name="desert">#BA5536</color>
+    <color name="red_clay">#A43820</color>
+
+    <!-- dark theme -->
+    <color name="dark_primary">#000000</color>
+    <color name="dark_secondary">#353232</color>
+    <color name="dark_primary_variant">#595655</color>
+
+
 </resources>
